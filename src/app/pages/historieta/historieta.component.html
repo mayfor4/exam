@@ -1,0 +1,73 @@
+<div style="margin: 20px;">
+    <h1 class="text-center mb-4">Catálogo de Historietas</h1>
+    
+    @if(historietas.length > 0){
+      <table class="table table-hover">
+        <thead class="thead-light"> 
+          <tr>  
+           
+            <th>Título</th>
+            <th>Género</th>
+            <th>Precio</th>
+            <th>Tipo</th> <!-- Nueva columna para el tipo -->
+            <th>Seleccionar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(historieta of historietas || []; track historieta.id){
+            <tr>
+             
+              <td>{{historieta.titulo}}</td>
+              <td>{{historieta.genero}}</td>
+              <td>{{historieta.precio }}</td>
+              <td>{{historieta.tipo}}</td> <!-- Mostrar el tipo -->
+              <td>
+                <button type="button" class="btn btn-warning btn-sm"
+                (click)="selectHistorieta(historieta)">Seleccionar</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm"
+                (click)="deleteHistorieta(historieta.id)">Eliminar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p class="text-center">No hay historietas en el catálogo</p>
+    }
+    
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h3 class="mb-3 text-center text-dark">Agregar/Modificar</h3>
+        <div class="form-group">
+          <label for="titulo">Título:</label>
+          <input type="text" class="form-control" id="titulo" [(ngModel)]="historieta.titulo"/>
+        </div>
+        <div class="form-group">
+          <label for="genero">Género:</label>
+          <input type="text" class="form-control" id="genero" [(ngModel)]="historieta.genero"/>
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio:</label>
+          <input type="number" class="form-control" id="precio" [(ngModel)]="historieta.precio"/>
+        </div>
+        <div class="form-group">
+          <label for="tipo">Tipo:</label>
+          <select class="form-control" id="tipo" [(ngModel)]="historieta.tipo">
+            <option value="">Seleccione un tipo</option>
+            @for(tipo of tipos; track tipo){
+              <option [value]="tipo">{{tipo}}</option>
+            }
+          </select>
+        </div>
+        <div class="mt-3 text-center">
+          <button type="button" class="btn btn-primary btn-sm mr-2" (click)="insertarHistorieta()">Agregar</button>
+          <button type="button" class="btn btn-success btn-sm" (click)="updateHistorieta()">Modificar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 

@@ -1,0 +1,53 @@
+<div style="margin: 20px;">
+    <h1 class="text-center mb-4">Catálogo de Productos</h1>
+    
+    @if(productos.length > 0){
+      <table class="table table-hover">
+        <thead class="thead-light"> 
+          <tr>  
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Seleccionar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(producto of productos; track producto.id){
+            <tr>
+              <td>{{producto.descripcion}}</td>
+              <td>{{producto.precio }}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm"
+                (click)="selectProducto(producto)">Seleccionar</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm"
+                (click)="deleteProducto(producto.id)">Eliminar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p class="text-center">No hay productos en el catálogo</p>
+    }
+    
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h3 class="mb-3 text-center text-dark">Agregar/Modificar</h3>
+    
+        <div class="form-group">
+          <label for="descripcion">Descripción:</label>
+          <input type="text" class="form-control" id="descripcion" [(ngModel)]="producto.descripcion"/>
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio:</label>
+          <input type="number" class="form-control" id="precio" [(ngModel)]="producto.precio"/>
+        </div>
+        <div class="mt-3 text-center">
+          <button type="button" class="btn btn-primary btn-sm mr-2" (click)="insertarProducto()">Agregar</button>
+          <button type="button" class="btn btn-success btn-sm" (click)="updateProducto()">Modificar</button>
+        </div>
+      </div>
+    </div>
+  </div>
