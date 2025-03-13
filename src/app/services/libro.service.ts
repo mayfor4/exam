@@ -15,13 +15,13 @@ export class LibroService {
 
   constructor() { }
 
-  //método que permita obtener el listado de los libros de la colección
+  
   getLibros(){
     const librosCollection = collection(this.db, 'libros');
     return collectionData((librosCollection), {idField: 'id'}).pipe(first());
 
   }
-  //para agregar un nuevo documento
+  
 agregarLibro(libro:Libro){
   const librosCollection = collection(this.db, 'libros');
   const libroData = {
@@ -33,7 +33,7 @@ agregarLibro(libro:Libro){
   addDoc(librosCollection, libroData);
 }
 
-//método para modificar un documento
+
 modificarLibro(libro:Libro){
   const documentRef = doc(this.db, 'libros', libro.id);
   updateDoc(documentRef, {
@@ -44,7 +44,7 @@ modificarLibro(libro:Libro){
   });
 }
 
-//métodopara borrar un documento
+
 eliminarLibro(libro:Libro){
   const documentRef = doc(this.db, 'libros', libro.id);
   deleteDoc(documentRef);

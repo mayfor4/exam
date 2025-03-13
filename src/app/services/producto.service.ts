@@ -12,34 +12,34 @@ export class ProductoService {
 
   constructor() {}
 
-  // Método para obtener el listado de productos de la colección
+  
   getProductos() {
-    const productosCollection = collection(this.db, 'productos'); // Cambia la colección a 'productos'
+    const productosCollection = collection(this.db, 'productos'); 
     return collectionData(productosCollection, { idField: 'id' }).pipe(first());
   }
 
-  // Método para agregar un nuevo producto
+  
   agregarProducto(producto: Producto) {
-    const productosCollection = collection(this.db, 'productos'); // Cambia la colección a 'productos'
+    const productosCollection = collection(this.db, 'productos'); 
     const productoData = {
-      descripcion: producto.descripcion, // Corrige el nombre de la propiedad
+      descripcion: producto.descripcion, 
       precio: producto.precio,
     };
     addDoc(productosCollection, productoData);
   }
 
-  // Método para modificar un producto existente
+  
   modificarProducto(producto: Producto) {
-    const documentRef = doc(this.db, 'productos', producto.id); // Cambia la colección a 'productos'
+    const documentRef = doc(this.db, 'productos', producto.id); 
     updateDoc(documentRef, {
-      descripcion: producto.descripcion, // Corrige el nombre de la propiedad
+      descripcion: producto.descripcion,
       precio: producto.precio,
     });
   }
 
-  // Método para eliminar un producto
+  
   eliminarProducto(producto: Producto) {
-    const documentRef = doc(this.db, 'productos', producto.id); // Cambia la colección a 'productos'
+    const documentRef = doc(this.db, 'productos', producto.id); 
     deleteDoc(documentRef);
   }
 }

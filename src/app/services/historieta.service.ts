@@ -12,13 +12,13 @@ export class HistorietaService {
 
   constructor() {}
 
-  // Método para obtener el listado de historietas de la colección
+  
   getHistorietas() {
     const historietasCollection = collection(this.db, 'historietas');
     return collectionData(historietasCollection, { idField: 'id' }).pipe(first());
   }
 
-  // Método para agregar una nueva historieta
+ 
   agregarHistorieta(historieta: Historieta) {
     const historietasCollection = collection(this.db, 'historietas');
     const historietaData = {
@@ -30,7 +30,7 @@ export class HistorietaService {
     addDoc(historietasCollection, historietaData);
   }
 
-  // Método para modificar una historieta existente
+ 
   modificarHistorieta(historieta: Historieta) {
     const documentRef = doc(this.db, 'historietas', historieta.id);
     updateDoc(documentRef, {
@@ -41,7 +41,7 @@ export class HistorietaService {
     });
   }
 
-  // Método para eliminar una historieta
+ 
   eliminarHistorieta(historieta: Historieta) {
     const documentRef = doc(this.db, 'historietas', historieta.id);
     deleteDoc(documentRef);
