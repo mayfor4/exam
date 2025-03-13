@@ -1,50 +1,41 @@
-<div style="margin: 20px;">
-    <h1>Catálogo de Libros</h1>
-
-    <h4>Alta de Libros</h4>
-
-    <div class="col-sm-4">
+<div style="margin: 20px; font-family: Arial, sans-serif; color: #f0f0f0; background-color: #121212; padding: 20px; border-radius: 10px;">
+    <h1 style="text-align: center; color: #ffcc00;">Catálogo de Libros</h1>
+    
+    <h4 style="color: #ffcc00;">Alta de Libros</h4>
+    
+    <div class="col-sm-4" style="background: #1e1e1e; padding: 15px; border-radius: 8px;">
         <p>
             <label>Título:</label>
-            <input type="text" class="form-control" [(ngModel)]="libro.titulo" />
+            <input type="text" class="form-control" style="background: #333; color: #fff; border: none;" [(ngModel)]="libro.titulo" />
         </p>
 
         <p>
             <label>Autor:</label>
-            <input type="text" class="form-control" [(ngModel)]="libro.autor" />
+            <input type="text" class="form-control" style="background: #333; color: #fff; border: none;" [(ngModel)]="libro.autor" />
         </p>
 
         <p>
             <label>Editorial:</label>
-            <input type="text" class="form-control" [(ngModel)]="libro.editorial" />
+            <input type="text" class="form-control" style="background: #333; color: #fff; border: none;" [(ngModel)]="libro.editorial" />
         </p>
 
         <p>
             <label>Año de publicación:</label>
-            <input type="text" class="form-control" [(ngModel)]="libro.anioPublicacion" />
+            <input type="text" class="form-control" style="background: #333; color: #fff; border: none;" [(ngModel)]="libro.anioPublicacion" />
         </p>
 
-        <table>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-primary" (click)="this.insertarLibro()">Insertar</button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-warning" (click)="this.updateLibro()">Modificar</button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger" (click)="this.deleteLibro()">Eliminar</button>
-                </td>
-            </tr>
-        </table>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button type="button" class="btn btn-primary" style="background-color: #ffcc00; border: none; color: #000;" (click)="this.insertarLibro()">Insertar</button>
+            <button type="button" class="btn btn-warning" style="background-color: #ff6600; border: none; color: #000;" (click)="this.updateLibro()">Modificar</button>
+            <button type="button" class="btn btn-danger" style="background-color: #ff0000; border: none; color: #fff;" (click)="this.deleteLibro()">Eliminar</button>
+        </div>
     </div>
 
-    <hr>
+    <hr style="border-color: #ffcc00;">
 
-    <!-- Tabla ocupando todo el ancho de la pantalla -->
     <div class="table-responsive">
-        <table class="table table-bordered w-100">
-            <thead class="table-dark">
+        <table class="table table-bordered w-100" style="background: #1e1e1e; color: #fff; text-align: center;">
+            <thead style="background: #ffcc00; color: #000;">
                 <tr>
                     <th>Título</th>
                     <th>Autor</th>
@@ -61,9 +52,7 @@
                         <td>{{ libro.editorial }}</td>
                         <td>{{ libro.anioPublicacion }}</td>
                         <td>
-                            <button type="button" class="btn btn-success" (click)="this.selectLibro(libro)">
-                                Seleccionar
-                            </button>
+                            <button type="button" class="btn btn-success" style="background-color: #ff6600; border: none; color: #000;" (click)="this.selectLibro(libro)">Seleccionar</button>
                         </td>
                     </tr>
                 }
