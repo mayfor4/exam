@@ -15,30 +15,9 @@
     text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
   }
   
-  .glitch-title::before {
-    content: attr(data-text);
-    position: absolute;
-    left: 2px;
-    text-shadow: -3px 0 magenta;
-    animation: glitch 0.8s infinite linear alternate-reverse;
-  }
+
   
-  .glitch-title::after {
-    content: attr(data-text);
-    position: absolute;
-    right: 2px;
-    text-shadow: 3px 0 cyan;
-    animation: glitch 0.8s infinite linear alternate-reverse;
-  }
   
-  @keyframes glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
-  }
   
   .cyberpunk-text {
     font-size: 1.2rem;

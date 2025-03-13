@@ -1,107 +1,68 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Historietas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-           
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        h1 {
-            color: #ffcc00;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #222;
-            color: #fff;
-        }
-        th, td {
-            padding: 8px;
-            border: 1px solid #ffcc00;
-        }
-        th {
-            background: #0044cc;
-        }
-        .form-container {
-            background: #111;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            text-align: left;
-        }
-        input, select {
-            width: 100%;
-            padding: 5px;
-            margin: 5px 0;
-        }
-        .btn {
-            background: #ffcc00;
-            border: none;
-            padding: 8px 15px;
-            margin: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn:hover {
-            background: #ffaa00;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1> Catálogo de Historietas </h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Género</th>
-                    <th>Precio</th>
-                    <th>Tipo</th>
-                    <th>Seleccionar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Superman</td>
-                    <td>Acción</td>
-                    <td>$10</td>
-                    <td>Comic</td>
-                    <td><button class="btn">✔</button></td>
-                    <td><button class="btn">✖</button></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="form-container">
-            <h3>📝 Agregar/Modificar</h3>
-            <label for="titulo">Título:</label>
-            <input type="text" id="titulo">
-            <label for="genero">Género:</label>
-            <input type="text" id="genero">
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio">
-            <label for="tipo">Tipo:</label>
-            <select id="tipo">
-                <option value="">Seleccione un tipo</option>
-                <option value="Comic">Comic</option>
-                <option value="Manga">Manga</option>
-            </select>
-            <button class="btn">➕ Agregar</button>
-            <button class="btn">🔄 Modificar</button>
-        </div>
-    </div>
-</body>
-</html>
+<div class="superman-container">
+  <h1 class="text-center superman-title"> Catálogo de Historietas </h1>
+
+  @if(historietas.length > 0) {
+      <table class="table superman-table">
+          <thead>
+              <tr>
+                  <th>Título</th>
+                  <th>Género</th>
+                  <th>Precio</th>
+                  <th>Tipo</th>
+                  <th>Seleccionar</th>
+                  <th>Eliminar</th>
+              </tr>
+          </thead>
+          <tbody>
+              @for(historieta of historietas || []; track historieta.id) {
+                  <tr>
+                      <td>{{historieta.titulo}}</td>
+                      <td>{{historieta.genero}}</td>
+                      <td>{{historieta.precio}}</td>
+                      <td>{{historieta.tipo}}</td>
+                      <td>
+                          <button class="btn superman-btn-select" (click)="selectHistorieta(historieta)">Seleccionar</button>
+                      </td>
+                      <td>
+                          <button class="btn superman-btn-delete" (click)="deleteHistorieta(historieta.id)">Eliminar</button>
+                      </td>
+                  </tr>
+              }
+          </tbody>
+      </table>
+  } @else {
+      <p class="text-center superman-no-data"> No hay historietas en el catálogo </p>
+  }
+<div class="col-md-4">
+    
+  <div class="form-container">
+      <div class="superman-card">
+          <h3 class="superman-card-title"> Agregar/Modificar</h3>
+          <div class="form-group">
+              <label for="titulo">Título:</label>
+              <input type="text" class="form-control" id="titulo" [(ngModel)]="historieta.titulo" />
+          </div>
+          <div class="form-group">
+              <label for="genero">Género:</label>
+              <input type="text" class="form-control" id="genero" [(ngModel)]="historieta.genero" />
+          </div>
+          <div class="form-group">
+              <label for="precio">Precio:</label>
+              <input type="number" class="form-control" id="precio" [(ngModel)]="historieta.precio" />
+          </div>
+          <div class="form-group">
+              <label for="tipo">Tipo:</label>
+              <select class="form-control" id="tipo" [(ngModel)]="historieta.tipo">
+                  <option value="">Seleccione un tipo</option>
+                  @for(tipo of tipos; track tipo) {
+                      <option [value]="tipo">{{tipo}}</option>
+                  }
+              </select>
+          </div>
+          <div class="mt-3 text-center">
+              <button class="btn superman-btn-add" (click)="insertarHistorieta()">Agregar</button>
+              <button class="btn superman-btn-update" (click)="updateHistorieta()">Modificar</button>
+          </div>
+      </div>
+  </div>
+</div>

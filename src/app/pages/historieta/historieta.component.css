@@ -1,0 +1,123 @@
+/* Fondo estilo Superman */
+.superman-container {
+    background: linear-gradient(to bottom, #000428, #004e92);
+    color: white;
+    padding: 20px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Título con efecto */
+.superman-title {
+    color: yellow;
+    text-shadow: 2px 2px 5px red;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* Tabla con colores de Superman */
+.superman-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.superman-table thead {
+    background: yellow;
+    color: red;
+    font-weight: bold;
+}
+
+.superman-table th, .superman-table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.superman-table tr:hover {
+    background: rgba(255, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+/* Botones con efecto Superman */
+.superman-btn-select {
+    background: yellow;
+    color: blue;
+    border: 2px solid red;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.superman-btn-select:hover {
+    background: blue;
+    color: yellow;
+    border: 2px solid yellow;
+}
+
+/* Botón de eliminar con efecto de peligro */
+.superman-btn-delete {
+    background: red;
+    color: white;
+    border: 2px solid yellow;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.superman-btn-delete:hover {
+    background: darkred;
+    border-color: white;
+}
+
+/* Mensaje de no hay datos */
+.superman-no-data {
+    font-size: 1.5rem;
+    color: yellow;
+    text-shadow: 0 0 5px red;
+}
+
+/* Estilo de la tarjeta del formulario */
+.superman-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid yellow;
+    box-shadow: 0 0 10px red;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.superman-card-title {
+    color: yellow;
+    text-shadow: 0 0 10px red;
+    font-size: 1.8rem;
+}
+
+/* Botón agregar y modificar */
+.superman-btn-add {
+    background: blue;
+    color: yellow;
+    border: 2px solid red;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.superman-btn-add:hover {
+    background: red;
+    color: white;
+    border: 2px solid yellow;
+}
+
+.superman-btn-update {
+    background: yellow;
+    color: blue;
+    border: 2px solid red;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.superman-btn-update:hover {
+    background: red;
+    color: yellow;
+    border: 2px solid white;
+}
